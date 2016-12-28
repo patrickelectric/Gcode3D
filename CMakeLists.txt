@@ -14,7 +14,6 @@ set(GcodeTo3D_SRCS GcodeTo3D.cpp main.cpp ${qml_QRC})
 
 add_executable(gcodeto3d ${GcodeTo3D_SRCS})
 set_target_properties(gcodeto3d PROPERTIES AUTOMOC ON)
-#target_link_libraries(gcodeto3d ${QT_QTCORE_LIBRARY})
 target_link_libraries(gcodeto3d PUBLIC Qt5::Core Qt5::Qml Qt5::Quick)
 
 install(TARGETS gcodeto3d RUNTIME DESTINATION bin)
