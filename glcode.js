@@ -61,9 +61,9 @@ function drawLine(pos) {
         positions[ i * 3 ] = x*5;
         positions[ i * 3 + 1 ] = y*5;
         positions[ i * 3 + 2 ] = z*5;
-        colors[ i * 3 ] = (segments-i)*255.0/segments;
-        colors[ i * 3 + 1 ] = (segments-i)*255.0/segments;
-        colors[ i * 3 + 2 ] = (segments-i)*255.0/segments;
+        colors[ i * 3 ] = (segments-i)/segments;
+        colors[ i * 3 + 1 ] = colors[ i * 3 ];
+        colors[ i * 3 + 2 ] = colors[ i * 3 ];
     }
 
     geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3));
