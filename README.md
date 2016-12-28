@@ -10,6 +10,8 @@ GCode3D is a Qt-based visualizer of *.gcode files.
   <ul class="g">
     <a href="/doc/imgs/1.png"><img src="doc/imgs/1.png" alt="Product Name" width="300" height="200" /></a>
     <a href="/doc/imgs/2.png"><img src="doc/imgs/2.png" alt="Product Name" width="300" height="200" /></a>
+    <a href="/doc/imgs/3.png"><img src="doc/imgs/3.png" alt="Product Name" width="300" height="200" /></a>
+    <a href="/doc/imgs/4.png"><img src="doc/imgs/4.png" alt="Product Name" width="300" height="200" /></a>
 </ul>
 </div>
 
