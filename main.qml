@@ -41,6 +41,13 @@ Window {
         color:"white"
     }
 
+     Text {
+        id: fileName
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: ""
+        color:"white"
+    }
+
     FileDialog {
         id: fileDialog
         title: "Please choose a file"
@@ -48,6 +55,7 @@ Window {
         nameFilters: [ "GCode (*.gcode)", "All files (*)" ]
         onAccepted: {
             console.log("You chose: " + fileDialog.fileUrls)
+            fileName.text = GLCode.urlToFileName(fileDialog.fileUrl)
             aGcodeTo3D.output(fileDialog.fileUrl)
             Qt.quit()
         }

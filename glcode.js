@@ -82,3 +82,9 @@ function paintGL(canvas) {
     scene.rotation.z = time*0.5
     renderer.render(scene, camera);
 }
+
+function urlToFileName(url) {
+    var splited = String(url).split('/');
+    var file = splited[splited.length - 1];
+    return file.split('.')[0];
+}
