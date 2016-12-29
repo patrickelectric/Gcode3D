@@ -1,18 +1,31 @@
 Qt.include("three.js")
+Qt.include("controls.js")
+
 var camera, scene, renderer;
 var cube;
 var mesh;
+var controls;
 
 function initializeGL(canvas) {
-    camera = new THREE.PerspectiveCamera(27, canvas.innerWidth/canvas.innerHeight, 1, 4000);
-    camera.position.z = 2800;
+    camera = new THREE.PerspectiveCamera(27, canvas.innerWidth/canvas.innerHeight, 1, 11000);
+
+    camera.position.x = 1500;
+    camera.position.y = 1500;
+    camera.position.z = 1500;
     scene = new THREE.Scene();
     renderer = new THREE.Canvas3DRenderer({canvas: canvas, antialias: true, devicePixelRatio: canvas.devicePixelRatio});
     renderer.setClearColor(0x707070);
     renderer.setSize(canvas.width, canvas.height);
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
+    scene.rotation.x = -Math.PI/2;
+
+    controls = new THREE.OrbitControls( camera, canvas);
+
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
 }
+
 function resizeGL(canvas) {
     camera.aspect = canvas.width/canvas.height;
     camera.updateProjectionMatrix();
@@ -78,18 +91,29 @@ function drawLine(pos) {
 var lastDate = 0;
 function paintGL(canvas) {
     var time = Date.now()*0.001;
-    scene.rotation.x = -Math.PI/4;
-    scene.rotation.z = time*0.5
+    // required if controls.enableDamping = true, or if controls.autoRotate = true
+    controls.update();
     renderer.render(scene, camera);
-}
-
-function zoom(angle) {
-    console.log(scene.position.z);
-    scene.position.z = scene.position.z + angle.y;
 }
 
 function urlToFileName(url) {
     var splited = String(url).split('/');
     var file = splited[splited.length - 1];
     return file.split('.')[0];
+}
+
+function onMouseMove(mouse){
+    controls.onMouseMove(mouse);
+}
+
+function onPressed(mouse){
+    controls.onMouseDown(mouse);
+}
+
+function onReleased(mouse){
+    controls.onMouseUp(mouse);
+}
+
+function onMouseWheel(mouse){
+    controls.onMouseWheel(mouse);
 }

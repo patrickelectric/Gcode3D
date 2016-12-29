@@ -66,12 +66,24 @@ Window {
     }
 
     MouseArea {
+            acceptedButtons: Qt.AllButtons
             anchors.fill: parent
+            hoverEnabled : true
             onDoubleClicked: {
                 fileDialog.open()
             }
             onWheel: {
-                GLCode.zoom(wheel.angleDelta)
+                GLCode.onMouseWheel(wheel);
             }
+            onPositionChanged: {
+                GLCode.onMouseMove(mouse);
+            }
+            onPressed: {
+                GLCode.onPressed(mouse);
+            }
+            onReleased: {
+                GLCode.onReleased(mouse);
+            }
+
     }
 }
