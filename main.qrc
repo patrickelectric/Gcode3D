@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>glcode.js</file>
         <file>three.js</file>
+        <file>controls.js</file>
     </qresource>
 </RCC>

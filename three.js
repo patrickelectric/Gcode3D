@@ -1701,6 +1701,19 @@ THREE.Vector3.prototype = {
 
 	},
 
+
+	setFromSpherical: function( s ) {
+
+			var sinPhiRadius = Math.sin( s.phi ) * s.radius;
+
+			this.x = sinPhiRadius * Math.sin( s.theta );
+			this.y = Math.cos( s.phi ) * s.radius;
+			this.z = sinPhiRadius * Math.cos( s.theta );
+
+			return this;
+
+		},
+
 	getComponent: function ( index ) {
 
 		switch ( index ) {
@@ -2417,12 +2430,12 @@ THREE.Vector3.prototype = {
 		return this;
 	},
 
-	setFromMatrixColumn: function ( index, matrix ) {
-		
+	// The parameters order was chenged here, not sure why
+	setFromMatrixColumn: function ( matrix, index ) {
+
 		var offset = index * 4;
 
-		var me = matrix.elements;
-
+		var me = matrix;
 		this.x = me[ offset ];
 		this.y = me[ offset + 1 ];
 		this.z = me[ offset + 2 ];
