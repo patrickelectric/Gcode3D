@@ -83,6 +83,11 @@ function paintGL(canvas) {
     renderer.render(scene, camera);
 }
 
+function zoom(angle) {
+    console.log(scene.position.z);
+    scene.position.z = scene.position.z + angle.y;
+}
+
 function urlToFileName(url) {
     var splited = String(url).split('/');
     var file = splited[splited.length - 1];

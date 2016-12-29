@@ -67,8 +67,11 @@ Window {
 
     MouseArea {
             anchors.fill: parent
-            onClicked: {
+            onDoubleClicked: {
                 fileDialog.open()
+            }
+            onWheel: {
+                GLCode.zoom(wheel.angleDelta)
             }
     }
 }
